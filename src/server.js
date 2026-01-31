@@ -7,6 +7,7 @@ import { notFoundHandler } from "./middleware/notFoundHandler.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import router from "./routes/notesRoutes.js";
 import helmet from "helmet";
+import { errors } from "celebrate";
 
 const app = express();
 app.use(cors());
@@ -23,6 +24,8 @@ app.use(router);
 
 
 app.use(notFoundHandler);
+
+app.use(errors());
 
 app.use(errorHandler);
 
