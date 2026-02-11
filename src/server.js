@@ -8,11 +8,13 @@ import { errorHandler } from "./middleware/errorHandler.js";
 import router from "./routes/notesRoutes.js";
 import helmet from "helmet";
 import { errors } from "celebrate";
+import cookieParser from "cookie-parser";
 
 const app = express();
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(logger);
 
