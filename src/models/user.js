@@ -20,7 +20,7 @@ const userSchema = new Schema(
       min: 8,
     },
   },
-  { timeStamps: true, versionKey: false },
+  { timestamps: true, versionKey: false },
 );
 
 userSchema.methods.toJSON = function () {

@@ -3,7 +3,7 @@ import createHttpError from 'http-errors';
 export const getAllNotes = async (req, res) => {
   const { search, tag, page = 1, perPage = 10 } = req.query;
 
-  const noteQuery = Note.findOne({
+  const noteQuery = Note.find({
     userId: req.user._id,
   });
 
@@ -29,7 +29,7 @@ export const getAllNotes = async (req, res) => {
 
 export const getNoteById = async (req, res) => {
   const { noteId } = req.params;
-  const note = await Note.findOne({ noteId, userId: req.user._id });
+  const note = await Note.findOne({ _id: noteId, userId: req.user._id });
   if (!note) {
     throw createHttpError(404, 'Note not found');
   }

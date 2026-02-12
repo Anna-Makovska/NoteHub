@@ -17,7 +17,7 @@ export const createSession = (userId) => {
 };
 
 export const setSessionCookies = (res, session) => {
-  (res.cookie('accessToken', session.accessToken, {
+  res.cookie('accessToken', session.accessToken, {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
@@ -34,5 +34,5 @@ export const setSessionCookies = (res, session) => {
       secure: true,
       sameSite: 'none',
       maxAge: ONE_DAY,
-    }));
+    });
 };

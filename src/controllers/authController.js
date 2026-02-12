@@ -10,7 +10,7 @@ export const registerUser = async (req, res, next) => {
   const existingUser = await User.findOne({ email });
 
   if (existingUser) {
-    return next(createHttpError(404, 'Email in use'));
+    return next(createHttpError(400, 'Email in use'));
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
@@ -63,23 +63,23 @@ export const logoutUser = async (req, res, next) => {
 export const refreshUserSession = async (req, res, next) => {
 
   const session = await Session.findOne({
-    _id: req.cookie.sessionId,
-    refreshToken: req.cookie.refreshToken,
+    _id: req.cookies.sessionId,
+    refreshToken: req.cookies.refreshToken,
   });
 
   if (!session) {
     throw createHttpError(401, 'Session not found');
   }
 
-  const isRefreshTokenValid = new Date() > Date(session.refreshTokenValidUntil);
+  const isRefreshTokenExpired = new Date() > new Date(session.refreshTokenValidUntil);
 
-  if (!isRefreshTokenValid) {
+  if (isRefreshTokenExpired) {
     throw createHttpError(401, 'Session token expired');
   }
 
   await Session.deleteOne({
-    _id: req.cookie.sessionId,
-    refreshToken: req.cookie.refreshToken,
+    _id: req.cookies.sessionId,
+    refreshToken: req.cookies.refreshToken,
   });
 
   const newSession = await createSession(session.userId);
