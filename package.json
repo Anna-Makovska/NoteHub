@@ -31,11 +31,16 @@
     "celebrate": "^15.0.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
+    "cloudinary": "^2.0.0",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
+    "handlebars": "^4.7.8",
     "helmet": "^8.1.0",
     "http-errors": "^2.0.1",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^1.4.5-lts.1",
     "mongoose": "^9.1.5",
+    "nodemailer": "^6.9.11",
     "nodemon": "^3.1.11",
     "pino-http": "^11.0.0"
   }

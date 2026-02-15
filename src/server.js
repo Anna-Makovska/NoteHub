@@ -10,6 +10,7 @@ import helmet from "helmet";
 import { errors } from "celebrate";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/authRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 
 const app = express();
 app.use(cors());
@@ -24,6 +25,7 @@ const PORT = process.env.PORT ?? 3000;
 
 app.use(authRouter);
 app.use(NotesRouter);
+app.use(userRouter);
 
 
 app.use(notFoundHandler);
@@ -37,5 +39,4 @@ await connectMongoDB();
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
 
