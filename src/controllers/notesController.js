@@ -6,7 +6,9 @@ export const getAllNotes = async (req, res) => {
   const page = Number(req.query.page) || 1;
   const perPage = Number(req.query.perPage) || 10;
 
-  const filter = { userId: req.user._id };
+  const filter = {
+    $or: [{ userId: req.user._id }, { isPublic: true }],
+  };
 
   if (search) {
     filter.$text = { $search: search };
