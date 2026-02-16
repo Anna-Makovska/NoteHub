@@ -15,7 +15,7 @@ import swaggerUi from 'swagger-ui-express';
 import { openapiSpec } from './docs/openapi.js';
 
 const app = express();
-app.use(cors({ origin: process.env.FRONTEND_DOMAIN, credentials: true }));  
+app.use(cors({ origin: [process.env.FRONTEND_DOMAIN, `http://localhost:${process.env.PORT ?? 3000}`], credentials: true }));
 app.use(helmet());
 app.use(express.json());
 app.use(cookieParser());
@@ -28,6 +28,7 @@ const PORT = process.env.PORT ?? 3000;
 app.use(authRouter);
 app.use(NotesRouter);
 app.use(userRouter);
+
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpec));
 
@@ -43,4 +44,3 @@ await connectMongoDB();
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
