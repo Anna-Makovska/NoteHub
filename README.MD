@@ -1,53 +1,55 @@
-# NoteHub API
+п»ї# NoteHub API
 
-Backend для застосунку нотаток із авторизацією, сесіями в cookies та відновленням пароля.
+Backend РґР»СЏ Р·Р°СЃС‚РѕСЃСѓРЅРєСѓ РЅРѕС‚Р°С‚РѕРє С–Р· Р°РІС‚РѕСЂРёР·Р°С†С–С”СЋ, СЃРµСЃС–СЏРјРё РІ cookies С‚Р° РІС–РґРЅРѕРІР»РµРЅРЅСЏРј РїР°СЂРѕР»СЏ.
 
-**Посилання**
-- Frontend (деплой): http://09-auth-inky-tau.vercel.app
-- Backend (репозиторій): https://github.com/Anna-Makovska/nodejs-hw
+**РџРѕСЃРёР»Р°РЅРЅСЏ**
+- Frontend (РґРµРїР»РѕР№): http://09-auth-inky-tau.vercel.app
+- Backend (СЂРµРїРѕР·РёС‚РѕСЂС–Р№): https://github.com/Anna-Makovska/nodejs-hw
+- Swagger (prod): https://nodejs-hw-4-rr32.onrender.com/api-docs
 
-**Функціонал**
-- Реєстрація, логін, логаут та оновлення сесії через httpOnly cookies.
-- Відновлення пароля через email і токен.
-- CRUD нотаток з пошуком, фільтрацією за тегом і пагінацією.
-- Завантаження аватара користувача (Cloudinary).
+**Р¤СѓРЅРєС†С–РѕРЅР°Р»**
+- Р РµС”СЃС‚СЂР°С†С–СЏ, Р»РѕРіС–РЅ, Р»РѕРіР°СѓС‚ С‚Р° РѕРЅРѕРІР»РµРЅРЅСЏ СЃРµСЃС–С— С‡РµСЂРµР· httpOnly cookies.
+- Р’С–РґРЅРѕРІР»РµРЅРЅСЏ РїР°СЂРѕР»СЏ С‡РµСЂРµР· email С– С‚РѕРєРµРЅ.
+- CRUD РЅРѕС‚Р°С‚РѕРє Р· РїРѕС€СѓРєРѕРј, С„С–Р»СЊС‚СЂР°С†С–С”СЋ Р·Р° С‚РµРіРѕРј С– РїР°РіС–РЅР°С†С–С”СЋ.
+- Р—Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏ Р°РІР°С‚Р°СЂР° РєРѕСЂРёСЃС‚СѓРІР°С‡Р° (Cloudinary).
 
-**Технології**
+**РўРµС…РЅРѕР»РѕРіС–С—**
 - Node.js, Express, MongoDB, Mongoose
-- bcrypt для хешування паролів
-- JWT для токенів відновлення пароля
-- Nodemailer + Handlebars для email-шаблонів
-- Cloudinary для зберігання аватарів
-- Celebrate/Joi для валідації
+- bcrypt РґР»СЏ С…РµС€СѓРІР°РЅРЅСЏ РїР°СЂРѕР»С–РІ
+- JWT РґР»СЏ С‚РѕРєРµРЅС–РІ РІС–РґРЅРѕРІР»РµРЅРЅСЏ РїР°СЂРѕР»СЏ
+- Nodemailer + Handlebars РґР»СЏ email-С€Р°Р±Р»РѕРЅС–РІ
+- Cloudinary РґР»СЏ Р·Р±РµСЂС–РіР°РЅРЅСЏ Р°РІР°С‚Р°СЂС–РІ
+- Celebrate/Joi РґР»СЏ РІР°Р»С–РґР°С†С–С—
 
 **API**
 
 | Method | Route | Description | Auth |
 | --- | --- | --- | --- |
-| POST | `/auth/register` | Реєстрація | No |
-| POST | `/auth/login` | Логін | No |
-| POST | `/auth/logout` | Логаут | Yes |
-| POST | `/auth/refresh` | Оновити сесію | Yes |
-| POST | `/auth/request-reset-email` | Надіслати email для відновлення | No |
-| POST | `/auth/reset-password` | Скинути пароль за токеном | No |
-| GET | `/notes` | Список нотаток (`search`, `tag`, `page`, `perPage`) | Yes |
-| GET | `/notes/:noteId` | Отримати нотатку | Yes |
-| POST | `/notes` | Створити нотатку | Yes |
-| PATCH | `/notes/:noteId` | Оновити нотатку | Yes |
-| DELETE | `/notes/:noteId` | Видалити нотатку | Yes |
-| PATCH | `/users/me/avatar` | Оновити аватар (multipart `avatar`) | Yes |
+| POST | `/auth/register` | Р РµС”СЃС‚СЂР°С†С–СЏ | No |
+| POST | `/auth/login` | Р›РѕРіС–РЅ | No |
+| POST | `/auth/logout` | Р›РѕРіР°СѓС‚ | Yes |
+| POST | `/auth/refresh` | РћРЅРѕРІРёС‚Рё СЃРµСЃС–СЋ | Yes |
+| POST | `/auth/request-reset-email` | РќР°РґС–СЃР»Р°С‚Рё email РґР»СЏ РІС–РґРЅРѕРІР»РµРЅРЅСЏ | No |
+| POST | `/auth/reset-password` | РЎРєРёРЅСѓС‚Рё РїР°СЂРѕР»СЊ Р·Р° С‚РѕРєРµРЅРѕРј | No |
+| GET | `/notes` | РЎРїРёСЃРѕРє РЅРѕС‚Р°С‚РѕРє (`search`, `tag`, `page`, `perPage`) | Yes |
+| GET | `/notes/:noteId` | РћС‚СЂРёРјР°С‚Рё РЅРѕС‚Р°С‚РєСѓ | Yes |
+| POST | `/notes` | РЎС‚РІРѕСЂРёС‚Рё РЅРѕС‚Р°С‚РєСѓ | Yes |
+| PATCH | `/notes/:noteId` | РћРЅРѕРІРёС‚Рё РЅРѕС‚Р°С‚РєСѓ | Yes |
+| DELETE | `/notes/:noteId` | Р’РёРґР°Р»РёС‚Рё РЅРѕС‚Р°С‚РєСѓ | Yes |
+| PATCH | `/users/me/avatar` | РћРЅРѕРІРёС‚Рё Р°РІР°С‚Р°СЂ (multipart `avatar`) | Yes |
 
-Авторизація працює через cookies (`accessToken`, `refreshToken`, `sessionId`). На фронтенді потрібно робити запити з `credentials: 'include'`.
+РђРІС‚РѕСЂРёР·Р°С†С–СЏ РїСЂР°С†СЋС” С‡РµСЂРµР· cookies (`accessToken`, `refreshToken`, `sessionId`). РќР° С„СЂРѕРЅС‚РµРЅРґС– РїРѕС‚СЂС–Р±РЅРѕ СЂРѕР±РёС‚Рё Р·Р°РїРёС‚Рё Р· `credentials: 'include'`.
 
 **Swagger**
-- Документація доступна за адресою /api-docs (наприклад: http://localhost:3000/api-docs).
+- Р”РѕРєСѓРјРµРЅС‚Р°С†С–СЏ РґРѕСЃС‚СѓРїРЅР° Р·Р° Р°РґСЂРµСЃРѕСЋ /api-docs (РЅР°РїСЂРёРєР»Р°Рґ: http://localhost:3000/api-docs).
+- РџСЂРѕРґР°РєС€РЅ Swagger: https://nodejs-hw-4-rr32.onrender.com/api-docs
 
-**Запуск проєкту локально**
+**Р—Р°РїСѓСЃРє РїСЂРѕС”РєС‚Сѓ Р»РѕРєР°Р»СЊРЅРѕ**
 1. `npm install`
-1. Створіть `.env` за прикладом нижче
+1. РЎС‚РІРѕСЂС–С‚СЊ `.env` Р·Р° РїСЂРёРєР»Р°РґРѕРј РЅРёР¶С‡Рµ
 1. `npm run dev`
 
-**Приклад .env**
+**РџСЂРёРєР»Р°Рґ .env**
 
 ```env
 PORT=3000
