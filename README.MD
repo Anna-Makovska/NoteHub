@@ -3,9 +3,8 @@
 Backend для застосунку нотаток із авторизацією, сесіями в cookies та відновленням пароля.
 
 **Посилання**
-- Frontend (деплой): http://09-auth-inky-tau.vercel.app
-- Backend (репозиторій): https://github.com/Anna-Makovska/nodejs-hw
-- Swagger (prod): https://nodejs-hw-4-rr32.onrender.com/api-docs
+- Frontend : http://09-auth-inky-tau.vercel.app
+- Swagger : https://nodejs-hw-4-rr32.onrender.com/api-docs
 
 **Функціонал**
 - Реєстрація, логін, логаут та оновлення сесії через httpOnly cookies.
@@ -23,22 +22,22 @@ Backend для застосунку нотаток із авторизацією
 
 **API**
 
-| Method | Route | Description | Auth |
+| Method | Route | Description 
 | --- | --- | --- | --- |
-| POST | `/auth/register` | Реєстрація | No |
-| POST | `/auth/login` | Логін | No |
-| POST | `/auth/logout` | Логаут | Yes |
-| POST | `/auth/refresh` | Оновити сесію | Yes |
-| POST | `/auth/request-reset-email` | Надіслати email для відновлення | No |
-| POST | `/auth/reset-password` | Скинути пароль за токеном | No |
-| GET | `/notes` | Список нотаток (`search`, `tag`, `page`, `perPage`) | Yes |
-| GET | `/notes/:noteId` | Отримати нотатку | Yes |
-| POST | `/notes` | Створити нотатку | Yes |
-| PATCH | `/notes/:noteId` | Оновити нотатку | Yes |
-| DELETE | `/notes/:noteId` | Видалити нотатку | Yes |
-| PATCH | `/users/me/avatar` | Оновити аватар (multipart `avatar`) | Yes |
+| POST | `/auth/register` | Реєстрація 
+| POST | `/auth/login` | Логін 
+| POST | `/auth/logout` | Логаут 
+| POST | `/auth/refresh` | Оновити сесію 
+| POST | `/auth/request-reset-email` | Надіслати email для відновлення 
+| POST | `/auth/reset-password` | Скинути пароль за токеном 
+| GET | `/notes` | Список нотаток (`search`, `tag`, `page`, `perPage`) 
+| GET | `/notes/:noteId` | Отримати нотатку 
+| POST | `/notes` | Створити нотатку 
+| PATCH | `/notes/:noteId` | Оновити нотатку 
+| DELETE | `/notes/:noteId` | Видалити нотатку
+| PATCH | `/users/me/avatar` | Оновити аватар (multipart `avatar`) 
 
-Авторизація працює через cookies (`accessToken`, `refreshToken`, `sessionId`). На фронтенді потрібно робити запити з `credentials: 'include'`.
+
 
 **Swagger**
 - Документація доступна за адресою /api-docs (наприклад: http://localhost:3000/api-docs).
