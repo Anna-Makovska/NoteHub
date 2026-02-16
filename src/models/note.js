@@ -18,6 +18,10 @@ const NoteSchema = new Schema(
       enum: TAGS,
       default: 'Todo',
     },
+    isPublic: {
+      type: Boolean,
+      default: false,
+    },
     userId: {
       type: Schema.Types.ObjectId,
       ref: 'User',

@@ -4,7 +4,7 @@ export const getAllNotes = async (req, res) => {
   const { search, tag, page = 1, perPage = 10 } = req.query;
 
   const noteQuery = Note.find({
-    userId: req.user._id,
+    $or: [{ userId: req.user._id }, { isPublic: true }],
   });
 
   const skip = (page - 1) * perPage;

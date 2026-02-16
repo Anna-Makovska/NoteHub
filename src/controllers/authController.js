@@ -48,7 +48,9 @@ export const loginUser = async (req, res, next) => {
   const newSession = await createSession(user._id);
   setSessionCookies(res, newSession);
 
-  res.status(200).json(user);
+  res.status(200).json({
+    message: 'Login successful',
+  });
 };
 
 export const logoutUser = async (req, res, next) => {
