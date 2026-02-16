@@ -20,23 +20,6 @@ Backend для застосунку нотаток із авторизацією
 - Cloudinary для зберігання аватарів
 - Celebrate/Joi для валідації
 
-**API**
-
-| Method | Route | Description 
-| --- | --- | --- | --- |
-| POST | `/auth/register` | Реєстрація 
-| POST | `/auth/login` | Логін 
-| POST | `/auth/logout` | Логаут 
-| POST | `/auth/refresh` | Оновити сесію 
-| POST | `/auth/request-reset-email` | Надіслати email для відновлення 
-| POST | `/auth/reset-password` | Скинути пароль за токеном 
-| GET | `/notes` | Список нотаток (`search`, `tag`, `page`, `perPage`) 
-| GET | `/notes/:noteId` | Отримати нотатку 
-| POST | `/notes` | Створити нотатку 
-| PATCH | `/notes/:noteId` | Оновити нотатку 
-| DELETE | `/notes/:noteId` | Видалити нотатку
-| PATCH | `/users/me/avatar` | Оновити аватар (multipart `avatar`) 
-
 
 
 **Swagger**
