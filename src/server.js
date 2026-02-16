@@ -11,6 +11,8 @@ import { errors } from "celebrate";
 import cookieParser from "cookie-parser";
 import authRouter from "./routes/authRoutes.js";
 import userRouter from "./routes/userRoutes.js";
+import swaggerUi from 'swagger-ui-express';
+import { openapiSpec } from './docs/openapi.js';
 
 const app = express();
 app.use(cors());
@@ -27,6 +29,8 @@ app.use(authRouter);
 app.use(NotesRouter);
 app.use(userRouter);
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpec));
+
 
 app.use(notFoundHandler);
 
@@ -39,4 +43,3 @@ await connectMongoDB();
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
