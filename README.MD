@@ -3,8 +3,10 @@
 Backend для застосунку нотаток із авторизацією, сесіями в cookies та відновленням пароля.
 
 **Посилання**
+
 - Frontend : http://09-auth-inky-tau.vercel.app
 - Swagger : https://notehub-oul6.onrender.com/api-docs
+
 
 **Функціонал**
 - Реєстрація, логін, логаут та оновлення сесії через httpOnly cookies.
@@ -28,7 +30,7 @@ Backend для застосунку нотаток із авторизацією
 
 **Запуск проєкту локально**
 1. `npm install`
-1. Створіть `.env` за прикладом нижче
+1. Створіть `.env` на основі `.env.example`
 1. `npm run dev`
 
 **Приклад .env**
@@ -45,9 +47,12 @@ SMTP_USER=<smtp_user>
 SMTP_PASSWORD=<smtp_password>
 SMTP_FROM=<smtp_from>
 
-FRONTEND_DOMAIN=http://localhost:3000
+FRONTEND_DOMAIN=https://your-frontend-domain.vercel.app
+FRONTEND_PORT=5173
 
 CLOUDINARY_CLOUD_NAME=<cloudinary_cloud_name>
 CLOUDINARY_API_KEY=<cloudinary_api_key>
 CLOUDINARY_API_SECRET=<cloudinary_api_secret>
 ```
+
+Для локального фронтенда CORS дозволяє `http://localhost:<FRONTEND_PORT>`, а `FRONTEND_DOMAIN` використовується для прод-домену.
