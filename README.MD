@@ -4,7 +4,7 @@ Backend для застосунку нотаток із авторизацією
 
 **Посилання**
 - Frontend : http://09-auth-inky-tau.vercel.app
-- Swagger : https://nodejs-hw-4-rr32.onrender.com/api-docs
+- Swagger : https://notehub-oul6.onrender.com/api-docs
 
 **Функціонал**
 - Реєстрація, логін, логаут та оновлення сесії через httpOnly cookies.
